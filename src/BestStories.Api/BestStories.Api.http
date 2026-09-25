@@ -1,0 +1,16 @@
+@host = http://localhost:5080
+
+GET {{host}}/api/v1/stories/best?count=10
+Accept: application/json
+
+###
+
+GET {{host}}/api/v1/stories/best?count=0
+
+###
+
+GET {{host}}/health/ready
+
+###
+
+GET {{host}}/openapi/v1.json

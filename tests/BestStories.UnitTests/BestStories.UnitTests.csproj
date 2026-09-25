@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\BestStories.Core\BestStories.Core.csproj" />
+    <ProjectReference Include="..\..\src\BestStories.Infrastructure\BestStories.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
