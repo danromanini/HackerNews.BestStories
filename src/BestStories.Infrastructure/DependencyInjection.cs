@@ -33,6 +33,8 @@ public static class DependencyInjection
         services.AddHostedService<BestStoriesRefreshWorker>();
 
         services.AddHttpClient<IHackerNewsClient, HackerNewsClient>(ConfigureHttpClient)
+            .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler { PooledConnectionLifetime = TimeSpan.FromMinutes(2) })
+            .SetHandlerLifetime(Timeout.InfiniteTimeSpan)
             .AddStandardResilienceHandler()
             .Configure(ConfigureResilience);
 

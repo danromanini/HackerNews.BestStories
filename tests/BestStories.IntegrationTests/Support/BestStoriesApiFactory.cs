@@ -1,4 +1,6 @@
 using BestStories.Api.Stories;
+using BestStories.Core.Abstractions;
+using BestStories.Infrastructure.HackerNews;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -39,6 +41,7 @@ public sealed class BestStoriesApiFactory(FakeHackerNewsApi hackerNews, IReadOnl
         }
 
         builder.ConfigureTestServices(services =>
-            services.ConfigureHttpClientDefaults(http => http.ConfigurePrimaryHttpMessageHandler(() => HackerNews)));
+            services.AddHttpClient<IHackerNewsClient, HackerNewsClient>()
+                .ConfigurePrimaryHttpMessageHandler(() => HackerNews));
     }
 }
