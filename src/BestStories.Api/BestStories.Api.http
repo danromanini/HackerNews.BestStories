@@ -13,4 +13,4 @@ GET {{host}}/health/ready
 
 ###
 
-GET {{host}}/openapi/v1.json
+GET {{host}}/swagger/v1/swagger.json

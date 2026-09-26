@@ -36,7 +36,7 @@ GET /api/v1/stories/best?count=3
 dotnet run --project src/BestStories.Api
 ```
 
-Then open <http://localhost:5080> (it redirects to the interactive [Scalar](https://scalar.com) API reference), or:
+Then open <http://localhost:5080> (it redirects to Swagger UI), or:
 
 ```bash
 curl "http://localhost:5080/api/v1/stories/best?count=10"
@@ -50,7 +50,7 @@ docker compose up --build
 
 | URL                                                  | What                                                  |
 | ---------------------------------------------------- | ----------------------------------------------------- |
-| <http://localhost:8080/scalar>                       | API reference                                         |
+| <http://localhost:8080/swagger>                      | Swagger UI                                            |
 | <http://localhost:8080/api/v1/stories/best?count=10> | The endpoint                                          |
 | <http://localhost:18888>                             | Aspire dashboard: traces, metrics and structured logs |
 
@@ -102,7 +102,7 @@ Hub at `/hubs/best-stories`:
 | -------------------- | ----------------------------------------------------------------------------------------- |
 | `GET /health/live`   | Liveness: the process is up.                                                              |
 | `GET /health/ready`  | Readiness: `Unhealthy` until the first snapshot loads, `Degraded` when data is stale.     |
-| `GET /openapi/v1.json` | OpenAPI 3.1 document.                                                                   |
+| `GET /swagger/v1/swagger.json` | OpenAPI document (Swagger UI at `/swagger`).                                    |
 
 ---
 
@@ -182,7 +182,7 @@ without touching it.
 | Concern            | Choice                                                                                          |
 | ------------------ | ----------------------------------------------------------------------------------------------- |
 | Runtime            | .NET 10 / C# 14, Minimal APIs, `TypedResults`, built-in minimal API validation (`AddValidation`) |
-| API docs           | `Microsoft.AspNetCore.OpenApi` (OpenAPI 3.1) + Scalar UI                                        |
+| API docs           | Swashbuckle (OpenAPI document + Swagger UI)                                                     |
 | HTTP resilience    | `Microsoft.Extensions.Http.Resilience` standard pipeline (Polly v8)                             |
 | Concurrency        | `Parallel.ForEachAsync`, immutable snapshot, `Volatile`, `TaskCompletionSource`, `ValueTask`   |
 | Serialization      | `System.Text.Json` source generators (no reflection on the hot path)                            |

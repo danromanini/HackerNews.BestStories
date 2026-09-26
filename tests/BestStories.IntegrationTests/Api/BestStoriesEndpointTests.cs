@@ -150,7 +150,7 @@ public class BestStoriesEndpointTests
     [Test]
     public async Task PublishesAnOpenApiDocument()
     {
-        var document = await _client.GetStringAsync(new Uri("/openapi/v1.json", UriKind.Relative));
+        var document = await _client.GetStringAsync(new Uri("/swagger/v1/swagger.json", UriKind.Relative));
 
         document.ShouldContain("/api/v1/stories/best");
         document.ShouldContain("Hacker News Best Stories API");
