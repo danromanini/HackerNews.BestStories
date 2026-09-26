@@ -28,12 +28,8 @@ internal static class BestStoriesEndpoints
         return app;
     }
 
-    internal static async Task<Results<Ok<BestStoryResponse[]>, StatusCodeHttpResult, ProblemHttpResult>> GetBestStoriesAsync(
-        [Range(BestStoriesLimits.MinCount, BestStoriesLimits.MaxCount)] int count,
-        IBestStoriesService bestStoriesService,
-        TimeProvider timeProvider,
-        HttpContext httpContext,
-        CancellationToken cancellationToken)
+    internal static async Task<Results<Ok<BestStoryResponse[]>, StatusCodeHttpResult, ProblemHttpResult>> GetBestStoriesAsync([Range(BestStoriesLimits.MinCount, BestStoriesLimits.MaxCount)] int count, IBestStoriesService bestStoriesService, TimeProvider timeProvider, 
+        HttpContext httpContext, CancellationToken cancellationToken)
     {
         var result = await bestStoriesService.GetBestStoriesAsync(count, cancellationToken);
 
